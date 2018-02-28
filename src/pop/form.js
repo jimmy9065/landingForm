@@ -13,7 +13,7 @@ var createCoverForm = function() {
   background.id = "xsyCoverDiv";
   background.style = "display:none;position:fixed;width:100%;height:100%;background:#000;z-index:2;top:0;left:0;opacity:0.7;"
 
-  form.id = "xsyJumpFormDiv";
+  form.id = "xsyPopFormDiv";
   form.style = "display:none;background:#fff;padding:20px 10px 20px 10px;line-height:30px;width:40%;left:30%;top:35%;color:#000;z-index:2;position:fixed;text-align:center;";
 
   document.body.appendChild(background, document.body.lastChild);
@@ -42,7 +42,7 @@ var showForm = function(sender) {
     callback_trigger();
 
     let cover = document.getElementById('xsyCoverDiv');
-    let form = document.getElementById('xsyJumpFormDiv');
+    let form = document.getElementById('xsyPopFormDiv');
     cover.style.display = "block";
     form.style.display = "inline";
     document.body.style.overflowY = "hidden";
@@ -57,7 +57,7 @@ var showForm = function(sender) {
 var hideForm = function(hasCookie) {
   let el = document.getElementById('xsyCoverDiv');
   el.style.display = "none";
-  el = document.getElementById('xsyJumpFormDiv')
+  el = document.getElementById('xsyPopFormDiv')
   el.style.display = "none";
   document.body.style.overflowY = "visible";
   if(hasCookie == true && control_el)

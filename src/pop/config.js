@@ -18,7 +18,7 @@ var drawForm = function(form, isRegister) {
   label.style.width = "80px";
   label.style.textAlign = "right";
   var name = document.createElement('input');
-  name.id = 'xsyFormName';
+  name.id = 'xsyPopFormName';
   div.appendChild(label);
   div.appendChild(name);
 
@@ -33,7 +33,7 @@ var drawForm = function(form, isRegister) {
   label.style.width = "80px";
   label.style.textAlign = "right";
   var email = document.createElement('input');
-  email.id = 'xsyFormEmail';
+  email.id = 'xsyPopFormEmail';
   div.appendChild(label);
   div.appendChild(email);
 
@@ -48,7 +48,7 @@ var drawForm = function(form, isRegister) {
   label.style.width = "80px";
   label.style.textAlign = "right";
   var cell = document.createElement('input');
-  cell.id = 'xsyFormCell';
+  cell.id = 'xsyPopFormCell';
   div.appendChild(label);
   div.appendChild(cell);
 
@@ -85,9 +85,9 @@ var drawForm = function(form, isRegister) {
 var submitForm = function() {
   //Extract the info from Form. You might need to customize it, 
   //if you use other setting for the form.
-  let name = document.getElementById('xsyFormName').value;
-  let email = document.getElementById('xsyFormEmail').value;
-  let cell = document.getElementById('xsyFormCell').value;
+  let name = document.getElementById('xsyPopFormName').value;
+  let email = document.getElementById('xsyPopFormEmail').value;
+  let cell = document.getElementById('xsyPopFormCell').value;
 
   //Cookie extractor
   let cookies = getXsyCookie();

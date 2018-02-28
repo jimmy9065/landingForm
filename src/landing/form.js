@@ -5,7 +5,7 @@ var createLandingForm = function (targetId) {
   console.log('creating Form');
   form = document.createElement("div");
   form.style.height = "150px";
-  form.id = 'xsyFormDiv'
+  form.id = 'xsyLandingFormDiv'
 
   insertNode = document.getElementById(targetId);
   insertNode.appendChild(form, insertNode);

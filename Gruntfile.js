@@ -57,6 +57,6 @@ var pkg = grunt.file.readJSON('package.json');
   grunt.loadNpmTasks('grunt-anonymous');
 
   grunt.registerTask('pop', ['concat:pop', 'removelogging', 'uglify', 'anonymous:pop']);
-  grunt.registerTask('landing', ['concat:landingForm', 'removelogging', 'uglify', 'anonymous:landing']);
-  grunt.registerTask('default', ['concat:pop', 'removelogging', 'uglify', 'anonymous:pop', 'concat:landingForm', 'removelogging', 'uglify', 'anonymous:landing']);
+  grunt.registerTask('landing', ['concat:landing', 'removelogging', 'uglify', 'anonymous:landing']);
+  grunt.registerTask('default', ['concat:pop', 'removelogging', 'uglify', 'anonymous:pop', 'concat:landing', 'removelogging', 'uglify', 'anonymous:landing']);
 };
