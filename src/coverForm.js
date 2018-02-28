@@ -19,7 +19,7 @@ var createCoverForm = function() {
   document.body.appendChild(background, document.body.lastChild);
   document.body.appendChild(form, background);
 
-  drawForm(form);
+  drawForm(form, true);
 };
 
 ///////////////////////////////////////////////////

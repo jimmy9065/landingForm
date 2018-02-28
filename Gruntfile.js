@@ -7,7 +7,7 @@ var pkg = grunt.file.readJSON('package.json');
         separator: ';',
       },
       dist: {
-        src: ['src/config.js', 'src/form.js', 'src/exec.js'],
+        src: ['src/config.js', 'src/coverForm.js', 'src/exec.js'],
         dest: 'dist/bundle.js',
       },
     },
