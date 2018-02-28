@@ -1,4 +1,8 @@
-///////////////////////////////////////////////////
+var control_el;
+var submitURL = "http://localhost:8082/api";
+var aid = 120874;
+
+//// + "="///////////////////////////////////////////////
 //
 // Customize form component
 // In drawForm(), you can customize the conponent
@@ -81,6 +85,9 @@ var submitForm = function() {
   let email = document.getElementById('xsyFormEmail').value;
   let cell = document.getElementById('xsyFormCell').value;
 
+  //Cookie extractor
+  let cookies = getXsyCookie();
+
   //Send the form, no need to change;
   if(name && email && cell){
     var xhttp = new XMLHttpRequest();
@@ -94,8 +101,9 @@ var submitForm = function() {
         hideForm(true);
       }
     }
-    xhttp.send(JSON.stringify({name: name, email: email, cell: cell}));
-    console.log("output: name=" + name + "&email=" + email + "&cell=" + cell);
+
+    let obj = {name: name, email: email, cell: cell, uid:cookies, aid: aid};
+    xhttp.send(JSON.stringify(obj));
   }
 };
 ///////////////////////////////////////////////////
@@ -104,7 +112,8 @@ var submitForm = function() {
 //
 ///////////////////////////////////////////////////
 var callback_trigger = function() {
-  control_el.pause();
+  if(control_el)
+    control_el.pause();
 }
 
 ///////////////////////////////////////////////////

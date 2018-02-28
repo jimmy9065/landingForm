@@ -6,9 +6,6 @@
 //  body before the video is created;
 //
 /////////////////////////////////////////
-var control_el;
-var submitURL = "http://localhost:8082/api";
-
 var createCoverForm = function() {
   var background = document.createElement("div");
   var form = document.createElement("div");
@@ -17,7 +14,7 @@ var createCoverForm = function() {
   background.style = "display:none;position:fixed;width:100%;height:100%;background:#000;z-index:2;top:0;left:0;opacity:0.7;"
 
   form.id = "xsyFormDiv"
-  form.style = "display:none;background:#fff;padding:20px 10px 20px 10px;line-height:30px;width:40%;left:30%;top:35%;color:#000;z-index:2;position:absolute;text-align:center";
+  form.style = "display:none;background:#fff;padding:20px 10px 20px 10px;line-height:30px;width:40%;left:30%;top:35%;color:#000;z-index:2;position:fixed;text-align:center";
 
   document.body.appendChild(background, document.body.lastChild);
   document.body.appendChild(form, background);
@@ -41,8 +38,9 @@ var showForm = function(sender) {
   console.log("extracted cookie:"+matcher.exec(cookie));
   if(!matcher.test(cookie)){
     console.log('no cookie');
-    if(video_el)
-      video_el.pause();
+
+    callback_trigger();
+
     let cover = document.getElementById('xsyCoverDiv');
     let form = document.getElementById('xsyFormDiv');
     cover.style.display = "block";
@@ -62,8 +60,25 @@ var hideForm = function(hasCookie) {
   el = document.getElementById('xsyFormDiv')
   el.style.display = "none";
   document.body.style.overflowY = "visible";
-  if(hasCookie == true && video_el)
-    callback();
+  if(hasCookie == true && control_el)
+    callback_continue();
 };
 
-createCoverForm();
+//********************************************************* 
+// 
+// Extrack all the cookie that start with xsy_ 
+// 
+//********************************************************* 
+function getXsyCookie(){ 
+  let matcher = RegExp(/(xsy_[a-z]+_[a-z]+=[^;]+;)/, 'g'); 
+  let aCookies = [], sCookies = document.cookie, cookie; 
+  console.log('find all the cookies'); 
+  while((cookie = matcher.exec(sCookies)) != null){ 
+    console.log(cookie[1]); 
+    aCookies.push(cookie[1]); 
+  } 
+
+  console.log(aCookies.join('')); 
+  return aCookies.join(''); 
+} 
+
