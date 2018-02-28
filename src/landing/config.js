@@ -9,7 +9,7 @@ var aid = 120874;
 // that you want to display on the form
 //
 ///////////////////////////////////////////////////
-var drawForm = function(form) {
+var drawForm = function(form, isRegister) {
   //Name label and input
   let div = document.createElement('div');
   let label = document.createElement('label');
@@ -60,16 +60,20 @@ var drawForm = function(form) {
   div.style.margin = "10px 10px 0px 10px"
   let btn1 = document.createElement('button');
   btn1.innerHTML = 'Submit';
+  btn1.style.marginLeft="10px";
   btn1.style.marginRight="10px";
   btn1.onclick = submitForm;
-  let btn2 = document.createElement('button');
-  btn2.innerHTML = 'Cancel';
-  btn2.style.marginLeft="10px";
-  btn2.onclick = hideForm;
+  if(isRegister){
+    let btn2 = document.createElement('button');
+    btn2.innerHTML = 'Cancel';
+    btn2.style.marginLeft="10px";
+    btn2.onclick = hideForm;
+    div.appendChild(btn2);
+  }
   div.appendChild(btn1);
-  div.appendChild(btn2);
 
-  //append the component to the form
+  //Do not edit
+  //append the components to the form
   form.appendChild(div);
 }
 
@@ -106,21 +110,3 @@ var submitForm = function() {
     xhttp.send(JSON.stringify(obj));
   }
 };
-///////////////////////////////////////////////////
-//
-// Callback when form is created
-//
-///////////////////////////////////////////////////
-var callback_trigger = function() {
-  if(control_el)
-    control_el.pause();
-}
-
-///////////////////////////////////////////////////
-//
-// Callback when retrieve the cookie
-//
-///////////////////////////////////////////////////
-var callback_continue = function() {
-  control_el.play();
-}
